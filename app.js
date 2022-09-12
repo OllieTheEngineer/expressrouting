@@ -9,15 +9,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 const ExpressError = require('./expressError')
 
-app.post('/mean', (req, res, next) => {
+app.get('/mean', (req, res, next) => {
     // list of numbers
     // console.log(req.body)
   let numbers = req.body['nums']
   let arrayOfNumbers = numbers.split(',');
-  let sumOfNumbers = 0
+  let sumOfNumbers = 0;
   for(let i =0; i < arrayOfNumbers.length; i++){
     let currentNumber = arrayOfNumbers[i]
-    console.log(currentNumber)
     sumOfNumbers = sumOfNumbers + currentNumber;
     // console.log(sumOfNumbers)
   }
