@@ -12,13 +12,14 @@ const ExpressError = require('./expressError')
 app.get('/mean', (req, res, next) => {
     // list of numbers
     // console.log(req.body)
-  let numbers = req.body['nums']
+  let numbers = req.query.nums
+  console.log(numbers)
   let arrayOfNumbers = numbers.split(',');
   let sumOfNumbers = 0;
   for(let i =0; i < arrayOfNumbers.length; i++){
-    let currentNumber = arrayOfNumbers[i]
+    let currentNumber = Number(arrayOfNumbers[i])
     sumOfNumbers = sumOfNumbers + currentNumber;
-    // console.log(sumOfNumbers)
+    console.log(sumOfNumbers)
   }
     let arrayCount = arrayOfNumbers.length
     let mean = sumOfNumbers / arrayCount
@@ -30,11 +31,11 @@ app.get('/mean', (req, res, next) => {
       return res.send(result);
 })
 
-app.post('/median', (req, res, next) => {
+app.get('/median', (req, res, next) => {
     //grab nums from an array
   // sort the array
   // return the median value
-    let numbers = req.body['nums']
+    let numbers = req.query.nums
     let arrayOfNumbers = numbers.split(',');
     let sortedArrayOfNumbers = arrayOfNumbers.sort((a, b)=> a-b);
     let middleInd = Math.floor(sortedArrayOfNumbers.length % 2 === 0)
@@ -47,12 +48,12 @@ app.post('/median', (req, res, next) => {
     return res.send(result)
 })
 
-app.post('/mode', (req, res, next) => {
+app.get('/mode', (req, res, next) => {
 
 })
 
 
-app.post('/all', (req, res, next) => {
+app.get('/all', (req, res, next) => {
    
 })
 
